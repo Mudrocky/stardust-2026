@@ -582,9 +582,14 @@
       $("epilogue").classList.add("show");
     }, 750);
   }
-  $("epiBtn").addEventListener("click", () => {
+  function closeEpilogue() {
     $("epilogue").classList.remove("show");
     setTimeout(() => { $("epilogue").hidden = true; }, 600);
+  }
+  $("epiBtn").addEventListener("click", closeEpilogue);
+  /* 点彩蛋背景任意处也能关闭：只认小按钮会让用户以为“卡死、点啥都没反应” */
+  $("epilogue").addEventListener("click", (e) => {
+    if (e.target === $("epilogue")) closeEpilogue();
   });
 
   /* ============================================================

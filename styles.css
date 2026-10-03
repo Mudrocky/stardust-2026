@@ -100,11 +100,10 @@ body.has-back .scene.active {
   }
   .scene { overflow: hidden; box-shadow: 0 20px 80px rgba(0,0,0,.55); border: 1px solid rgba(255,255,255,.07); }
   #sky { height: auto; }
-  #exitBtn, #backHome { /* 跟随框内定位由 fixed 改不掉，在宽屏往中间收 */
-    transform: translateX(calc(50vw - 220px));
-  }
-  #exitBtn { transform: translateX(calc(50vw - 220px)); }
-  #backHome { transform: translateX(calc(-50% + 0px)); }
+  /* ✕ 用 left 收进框内。不能用 transform 位移：:active 的 scale(.9) 会覆盖位移，
+     导致按下瞬间按钮跳回视口左缘、鼠标抬起时点击落空（电脑端点✕无反应的元凶） */
+  #exitBtn { left: calc(50vw - 220px + 16px); }
+  #backHome { transform: translateX(-50%); }
 }
 
 /* ---------- 通用小元素 ---------- */
