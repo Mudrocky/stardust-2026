@@ -102,7 +102,8 @@ body.has-back .scene.active {
   #sky { height: auto; }
   /* ✕ 用 left 收进框内。不能用 transform 位移：:active 的 scale(.9) 会覆盖位移，
      导致按下瞬间按钮跳回视口左缘、鼠标抬起时点击落空（电脑端点✕无反应的元凶） */
-  #exitBtn { left: calc(50vw - 220px + 16px); }
+  /* body 前缀提高优先级：基础样式 left:16px 在本媒体查询之后定义，同优先级会被它盖掉 */
+  body #exitBtn { left: calc(50vw - 220px + 16px); }
   #backHome { transform: translateX(-50%); }
 }
 
